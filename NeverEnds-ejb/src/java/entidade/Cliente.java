@@ -31,6 +31,30 @@ public class Cliente implements Serializable {
     private Long id;
     private String nome;
     private String cpf;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Calendar getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(Calendar nascimento) {
+        this.nascimento = nascimento;
+    }
     
     @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL)
     private List<Endereco> enderecos;
