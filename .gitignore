@@ -13,3 +13,6 @@ hs_err_pid*
 /NeverEnds-ejb/nbproject/private/
 /NeverEnds-war/nbproject/private/
 /nbproject/private/
+/NeverEnds-war/build/
+/NeverEnds-ejb/dist/
+/NeverEnds-ejb/build/
