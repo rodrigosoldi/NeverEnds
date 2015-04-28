@@ -11,6 +11,6 @@ import persistencia.iPersistencia;
  *
  * @author RodrigoSoldi
  */
-public interface iContaPersistencia extends iPersistencia {
-    
+public interface iContaPersistencia {
+    boolean autenticarConta(String agencia, String conta);
 }

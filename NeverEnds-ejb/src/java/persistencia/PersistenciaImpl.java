@@ -91,5 +91,10 @@ public class PersistenciaImpl implements iPersistencia{
         }
         return null;
     }
+
+    @Override
+    public EntityManager getManager() {
+        return this.manager;
+    }
     
 }

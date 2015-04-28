@@ -7,6 +7,7 @@ package persistencia;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.EntityManager;
 
 /**
  *
@@ -19,4 +20,6 @@ public interface iPersistencia {
     void delete(Serializable object);
     void update(Serializable object);
     List<Serializable> list(Class classe);
+    
+    EntityManager getManager();
 }
