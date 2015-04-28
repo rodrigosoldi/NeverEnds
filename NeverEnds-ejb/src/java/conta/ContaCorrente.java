@@ -7,6 +7,7 @@ package conta;
 
 import entidade.Cliente;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -132,6 +133,14 @@ public class ContaCorrente implements Serializable {
 
     public void setTransacoes(List<Transacao> transacoes) {
         this.transacoes = transacoes;
+    }
+    
+    public void addCartao(Cartao cartao) {
+        if(cartoes == null) {
+            cartoes = new ArrayList();
+        }
+        cartoes.add(cartao);
+        cartao.setContaCorrente(this);
     }
 
     @Override
