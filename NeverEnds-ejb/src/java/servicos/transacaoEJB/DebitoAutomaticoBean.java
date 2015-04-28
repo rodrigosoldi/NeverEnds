@@ -5,7 +5,9 @@
  */
 package servicos.transacaoEJB;
 
+import conta.ContaCorrente;
 import javax.ejb.Stateless;
+import transacao.Transferencia;
 
 /**
  *
@@ -15,7 +17,9 @@ import javax.ejb.Stateless;
 public class DebitoAutomaticoBean implements iDebitoAutomatico {
 
     @Override
-    public boolean criarDebitoAutomatico() {
+    public boolean criarDebitoAutomatico(ContaCorrente contaCorrente, double valor) {
+        Transferencia transferencia =  new Transferencia();
+        
         return true;
     }
 

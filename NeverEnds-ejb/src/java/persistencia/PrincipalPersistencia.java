@@ -56,5 +56,17 @@ public class PrincipalPersistencia {
         contaPoupanca2.setContaCorrente(contaCorrente2);
         contaPoupanca3.setContaCorrente(contaCorrente3);
         contaPoupanca4.setContaCorrente(contaCorrente4);
+        
+        iPersistencia persistencia = new PersistenciaImpl();
+        
+        persistencia.save(cliente1);
+        persistencia.save(cliente2);
+        persistencia.save(cliente3);
+        persistencia.save(cliente4);
+        persistencia.save(contaCorrente1);
+        persistencia.save(contaCorrente2);
+        persistencia.save(contaCorrente3);
+        persistencia.save(contaCorrente4);
+        
     }
 }
