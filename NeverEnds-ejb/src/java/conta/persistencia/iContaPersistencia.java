@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servicos.contasEJB;
+package conta.persistencia;
 
-import javax.ejb.Remote;
+import persistencia.iPersistencia;
 
 /**
  *
  * @author RodrigoSoldi
  */
-
-@Remote
-public interface iDebitoAutomatico {
-    public boolean criarDebitoAutomatico();
+public interface iContaPersistencia extends iPersistencia {
+    
 }

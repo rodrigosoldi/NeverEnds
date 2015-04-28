@@ -14,18 +14,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servicos.contasEJB.LoginManagerBean;
-import servicos.contasEJB.iLoginManager;
+import servicos.transacaoEJB.iDebitoAutomatico;
 
 /**
  *
  * @author RodrigoSoldi
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "DebitoAutomaticoServlet", urlPatterns = {"/DebitoAutomaticoServlet"})
+public class DebitoAutomaticoServlet extends HttpServlet {
     
     @EJB
-    private iLoginManager loginManager;
+    private iDebitoAutomatico debitoAutomatico;
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,8 +38,11 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        RequestDispatcher rd = request.getRequestDispatcher("/mainConta.jsp");
-        rd.forward(request, response);
+        if(debitoAutomatico.criarDebitoAutomatico()){
+            RequestDispatcher rd = request.getRequestDispatcher("/mainConta.jsp");
+            rd.forward(request, response);
+        }
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -16,6 +16,7 @@
         <h2>Colocar o nome aqui</h2>
         
         <p><a href="VerSaldoServlet">Ver Saldo (Caso de Uso 1)</a></p>
+        <p><a href="agendarDebitoAutomatico.jsp">Agenda Débito Automático (Caso MVP)</a></p>
         <p><a href="ConsultaExtratoServlet">Consultar extrato (Caso de Uso 2)</a></p>
         <p><a href="transferenciaParaPoupanca.jsp">Transferencia para poupanca</a></p>
         

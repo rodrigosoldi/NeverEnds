@@ -14,15 +14,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servicos.contasEJB.LoginManagerBean;
 import servicos.contasEJB.iLoginManager;
 
 /**
  *
  * @author RodrigoSoldi
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "EntrarServlet", urlPatterns = {"/EntrarServlet"})
+public class EntrarServlet extends HttpServlet {
     
     @EJB
     private iLoginManager loginManager;
@@ -37,9 +36,11 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        RequestDispatcher rd = request.getRequestDispatcher("/mainConta.jsp");
-        rd.forward(request, response);
+        loginManager.autenticar(request.getParameter("agencia"), request.getParameter("conta"));
+        if(loginManager.isLogged()){
+            RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+            rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
