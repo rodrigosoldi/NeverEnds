@@ -5,7 +5,6 @@
  */
 package conta.persistencia;
 
-import persistencia.iPersistencia;
 
 /**
  *

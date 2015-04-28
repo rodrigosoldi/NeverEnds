@@ -7,6 +7,7 @@ package persistencia;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.Local;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -20,13 +21,14 @@ import javax.persistence.criteria.Root;
  *
  * @author RodrigoSoldi
  */
+@Local
 public class PersistenciaImpl implements iPersistencia{
     
-    private final EntityManagerFactory factory;
-    private final EntityManager manager;
+    private EntityManagerFactory factory;
+    private EntityManager manager;
     private EntityTransaction transaction;
     
-    public PersistenciaImpl(EntityManagerFactory factory) {
+    public PersistenciaImpl() {
         this.factory = Persistence.createEntityManagerFactory("NeverEnds-ejbPU");
         manager = this.factory.createEntityManager();
     }
@@ -94,6 +96,10 @@ public class PersistenciaImpl implements iPersistencia{
 
     @Override
     public EntityManager getManager() {
+        if(factory == null){
+            factory = Persistence.createEntityManagerFactory("NeverEnds-ejbPU");
+            this.manager = factory.createEntityManager();
+        }
         return this.manager;
     }
     

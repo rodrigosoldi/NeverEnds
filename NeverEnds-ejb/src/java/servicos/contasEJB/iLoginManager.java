@@ -14,6 +14,6 @@ import javax.ejb.Remote;
 
 @Remote
 public interface iLoginManager {
-    public void autenticar(String agencia, String conta);
+    public boolean autenticar(String agencia, String conta);
     public boolean isLogged();
 }

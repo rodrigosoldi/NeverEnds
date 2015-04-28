@@ -5,30 +5,34 @@
  */
 package conta.persistencia;
 
-import java.io.Serializable;
-import java.util.List;
+import conta.ContaCorrente;
+import javax.ejb.Local;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
+import persistencia.PersistenciaImpl;
 
 /**
  *
  * @author RodrigoSoldi
  */
+@Local
 public class ContaPersistenciaImpl implements iContaPersistencia{
-
+    
     @Override
     public boolean autenticarConta(String agencia, String conta) {
         
-//        EntityManager manager;
-//        manager = new PersistenceImpl().getManager();
-//        Query query = manager.createQuery("SELECT conta.id ,conta.agencia, conta.numConta FROM ContaCorrente AS conta WHERE conta.agencia = :ag AND conta.numConta = :numC", ContaCorrente.class);        
-//        query.setParameter("ag", agencia);
-//        query.setParameter("numC", conta);
-//        query.setMaxResults(1);
-//        Object[] a = (Object[])query.getSingleResult();
-//        return a;
+        EntityManager manager = new PersistenciaImpl().getManager();
+        Query query = manager.createQuery("SELECT conta FROM ContaCorrente AS conta WHERE conta.agencia = :ag AND conta.numConta = :numC", ContaCorrente.class);        
+        query.setParameter("ag", agencia);
+        query.setParameter("numC", conta);
+        query.setMaxResults(1);
+        try{
+            ContaCorrente contaCorrente = (ContaCorrente)query.getSingleResult();
+            return contaCorrente != null;
+        }catch(NoResultException e){
+            return false;
+        }
         
-        
-        
-        return false;
     }
 }
