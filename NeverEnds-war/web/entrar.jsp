@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Entrar</h1>
-        <form method="post" action="EntrarServlet">
+        <form method="post" action="LoginServlet">
             <p>Agência:</p>
             <p><input type="text" name="agencia" value="" placeholder="Agência"></p>
             <p>Conta:</p>

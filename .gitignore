@@ -16,3 +16,6 @@ hs_err_pid*
 /NeverEnds-war/build/
 /NeverEnds-ejb/dist/
 /NeverEnds-ejb/build/
+/dist/
+/build/
+/NeverEnds-war/dist/
