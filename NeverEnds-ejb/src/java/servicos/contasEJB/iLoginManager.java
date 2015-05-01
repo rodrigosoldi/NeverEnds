@@ -5,6 +5,7 @@
  */
 package servicos.contasEJB;
 
+import conta.ContaCorrente;
 import javax.ejb.Remote;
 
 /**
@@ -14,6 +15,6 @@ import javax.ejb.Remote;
 
 @Remote
 public interface iLoginManager {
-    public boolean autenticar(String agencia, String conta);
+    public ContaCorrente autenticar(String agencia, String conta);
     public boolean isLogged();
 }

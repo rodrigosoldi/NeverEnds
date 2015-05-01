@@ -6,6 +6,7 @@
 package servicos.transacaoEJB;
 
 import conta.ContaCorrente;
+import java.util.Calendar;
 import javax.ejb.Remote;
 
 /**
@@ -15,5 +16,5 @@ import javax.ejb.Remote;
 
 @Remote
 public interface iDebitoAutomatico {
-    public boolean criarDebitoAutomatico(ContaCorrente contaCorrente, double valor);
+    public boolean criarDebitoAutomatico(ContaCorrente contaCorrente, float valor, Calendar data);
 }

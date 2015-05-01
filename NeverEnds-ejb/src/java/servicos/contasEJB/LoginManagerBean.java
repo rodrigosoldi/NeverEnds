@@ -30,7 +30,7 @@ public class LoginManagerBean implements iLoginManager {
     }
 
     @Override
-    public boolean autenticar(String agencia, String conta) {
+    public ContaCorrente autenticar(String agencia, String conta) {
         return new ContaPersistenciaImpl().autenticarConta(agencia, conta);
     }
 

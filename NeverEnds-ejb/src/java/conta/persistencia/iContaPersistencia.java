@@ -5,11 +5,13 @@
  */
 package conta.persistencia;
 
+import conta.ContaCorrente;
+
 
 /**
  *
  * @author RodrigoSoldi
  */
 public interface iContaPersistencia {
-    boolean autenticarConta(String agencia, String conta);
+    ContaCorrente autenticarConta(String agencia, String conta);
 }

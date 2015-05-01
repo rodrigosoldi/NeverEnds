@@ -32,7 +32,7 @@ public class Transacao implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataTransacao;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private ContaCorrente contaCorrente;
     
     private float valor;
@@ -97,4 +97,9 @@ public class Transacao implements Serializable {
         return "transacao.Transacao[ id=" + id + " ]";
     }
     
+    
+    public void debitar() {
+        contaCorrente.setSaldo(contaCorrente.getSaldo() - valor);
+        
+    }
 }

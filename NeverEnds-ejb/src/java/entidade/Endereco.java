@@ -6,6 +6,7 @@
 package entidade;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +32,7 @@ public class Endereco implements Serializable {
     private String estado;
     private String cep;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Cliente cliente;
     
     public Endereco() {

@@ -36,7 +36,8 @@ public class EntrarServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        loginManager.autenticar(request.getParameter("agencia"), request.getParameter("conta"));
+        ContaCorrente contaCorrente = loginManager.autenticar(request.getParameter("agencia"), request.getParameter("conta"));
+        request.getSession().setAttribute("contaCorrente", contaCorrente);
         if(loginManager.isLogged()){
             RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
             rd.forward(request, response);

@@ -12,6 +12,7 @@ import java.util.Calendar;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import transacao.Transacao;
+import transacao.Transferencia;
 
 /**
  *
@@ -27,7 +29,7 @@ import transacao.Transacao;
 @Entity
 public class ContaCorrente implements Serializable {
     
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Cliente cliente;
     private static final long serialVersionUID = 1L;
     
@@ -43,13 +45,13 @@ public class ContaCorrente implements Serializable {
     private String agencia;
     private float saldo;
     
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private ContaPoupanca contaPoupanca;
     
-    @OneToMany(mappedBy = "contaCorrente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "contaCorrente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Cartao> cartoes;
     
-    @OneToMany(mappedBy = "contaCorrente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "contaCorrente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Transacao> transacoes;
 
     public ContaCorrente() {
@@ -166,6 +168,15 @@ public class ContaCorrente implements Serializable {
     @Override
     public String toString() {
         return "conta.ContaCorrente[ id=" + id + " ]";
+    }
+
+    public void addTransacao(Transferencia transferencia) {
+        if(this.transacoes == null)
+            this.transacoes = new ArrayList<Transacao>();
+        
+        this.transacoes.add(transferencia);
+        transferencia.setContaCorrente(this);
+                
     }
     
 }

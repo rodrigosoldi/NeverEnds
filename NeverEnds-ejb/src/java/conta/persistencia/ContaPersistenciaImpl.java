@@ -20,7 +20,7 @@ import persistencia.PersistenciaImpl;
 public class ContaPersistenciaImpl implements iContaPersistencia{
     
     @Override
-    public boolean autenticarConta(String agencia, String conta) {
+    public ContaCorrente autenticarConta(String agencia, String conta) {
         
         EntityManager manager = new PersistenciaImpl().getManager();
         Query query = manager.createQuery("SELECT conta FROM ContaCorrente AS conta WHERE conta.agencia = :ag AND conta.numConta = :numC", ContaCorrente.class);        
@@ -29,9 +29,9 @@ public class ContaPersistenciaImpl implements iContaPersistencia{
         query.setMaxResults(1);
         try{
             ContaCorrente contaCorrente = (ContaCorrente)query.getSingleResult();
-            return contaCorrente != null;
-        }catch(NoResultException e){
-            return false;
+            return contaCorrente;
+        }catch(NoResultException | ClassCastException e){
+            return null;
         }
         
     }

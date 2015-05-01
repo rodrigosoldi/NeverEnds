@@ -7,6 +7,7 @@ package conta;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.GregorianCalendar;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,7 +39,7 @@ public class DebitoAutomaticoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        if(debitoAutomatico.criarDebitoAutomatico()){
+        if(debitoAutomatico.criarDebitoAutomatico((ContaCorrente)request.getSession().getAttribute("contaCorrente"), Float.parseFloat(request.getParameter("valor")), new GregorianCalendar())){
             RequestDispatcher rd = request.getRequestDispatcher("/mainConta.jsp");
             rd.forward(request, response);
         }
