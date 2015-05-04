@@ -4,6 +4,8 @@
     Author     : RodrigoSoldi
 --%>
 
+<%@page import="transacao.Transacao"%>
+<%@page import="conta.ContaCorrente"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.DateFormat"%>
@@ -19,17 +21,18 @@
         <title>BANCO NEVER ENDS</title>
     </head>
     <body>
+        <a href="mainConta.jsp">Voltar</a>
         <h1>Extrato</h1>
         <%
-            List<Object[]> list = (List)request.getAttribute("extrato");
-            for (Object[] item : list) {
-                Calendar data = (GregorianCalendar)item[0];
+            ContaCorrente contaCorrente = (ContaCorrente)request.getSession().getAttribute("contaCorrente");
+            
+            List<Transacao> list = contaCorrente.getTransacoes();
+            for (Transacao item : list) {
+                Calendar data = item.getDataTransacao();
                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-//                float valor = (float)item[1];
-                out.println(dateFormat.format(data.getTime()));
-                
+                out.println(dateFormat.format(data.getTime()));                
                 out.println(" - R$ ");
-                out.println(item[1]);
+                out.println(item.getValor());
                 out.println("<br>");
             }
         %>

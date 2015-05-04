@@ -37,7 +37,7 @@ public class DebitoAutomaticoBean implements iDebitoAutomatico {
         return true;
     }
 
-    @Schedule(second="*/5", minute="*", hour="*", persistent=false)
+    @Schedule(second="*/59", minute="*/59", hour="*/23", persistent=false)
     public void debita() {
         iPersistencia p = new PersistenciaImpl();
         List<Transacao> transacoes = (List)p.list(Transacao.class);

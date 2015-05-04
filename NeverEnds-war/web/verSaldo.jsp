@@ -4,6 +4,7 @@
     Author     : RodrigoSoldi
 --%>
 
+<%@page import="conta.ContaCorrente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,10 +12,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
-        <h1>Saldo Conta: </h1>
-        <%
-            out.println("<p>" + request.getSession().getAttribute("saldo"));
+    <body>        
+        <%                        
+            ContaCorrente contaCorrente = (ContaCorrente)request.getSession().getAttribute("contaCorrente");
+            
+            out.println("<h1>Seja bem vindo: "+contaCorrente.getCliente().getNome()+"</h1>");
+            
+            out.println("<br><br><h2>O saldo da sua conta é de: R$" + contaCorrente.getSaldo()+"</h2>");
         
         %>
     </body>
